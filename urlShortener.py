@@ -9,7 +9,6 @@ shorten(url), which shortens the url into a six-character alphanumeric string, s
 restore(short), which expands the shortened string into the original url. If no such shortened string exists, return null.
 Hint: What if we enter the same URL twice?
 '''
-from string import ascii_letters
 
 #example to test the program
 #example = "https://www.reddit.com/r/learnprogramming/comments/9wn2m4/what_colorscheme_does_george_hotz_geohot_commaai/"
