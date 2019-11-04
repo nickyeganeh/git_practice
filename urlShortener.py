@@ -38,7 +38,7 @@ def isvalid(s):
 
 	return valid
 
-
+#shortens url to desired section
 def shorten(url):
 	url_split = url.split("/")
 	for i in url_split:
