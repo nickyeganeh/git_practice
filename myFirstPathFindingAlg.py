@@ -31,9 +31,9 @@ array3 = [['f', 'f', 'f', 'f'],
 		  ['f', 't', 'f', 'f']]
 
 array4 = [['f', 'f', 'f', 'f'],
-		 ['t', 't', 't', 'f'],
-		 ['f', 'f', 'f', 'f'],
-		 ['f', 'f', 'f', 'f']]
+		  ['t', 't', 't', 'f'],
+		  ['f', 'f', 'f', 'f'],
+		  ['f', 'f', 'f', 'f']]
 
 #converts t's and f's to True and False boolean values		
 def convertToBoolean(array):	
@@ -49,52 +49,33 @@ def convertToBoolean(array):
 		r += 1
 
 
-def isPathAvailable(array):
-	pathFound = True
-	for i in array:
-		if len(set(i)) == 1:
-			pathfound = False
-		else:
-			pathFound = True
-	return pathFound
-
 #finds the shortest path from the bottom left of an array to the top left of the array
 def findShortestPath(array):
+	convertToBoolean(array)
+
+	countMoves = 0
+	r = len(array[0])
+	c = 0
+
 	try:
-		convertToBoolean(array)
-		pathFound = True
-		countMoves = 0
-		r = len(array[0])
-		c = 0
-		while r != 0 and isPathAvailable(array) and pathFound:
+		while r != 0:
 			if array[r-1][c] == False:
-				r -= 1
 				countMoves += 1
+				r -= 1
 
 			elif array[r][c+1] == False:
-				c += 1
 				countMoves += 1
+				c += 1
 
 			elif array[r+1][c] == False:
+				countMoves += 1
 				r += 1
-				countMoves += 1
 
-			elif array[r][c+1] == True and array[r-1][c] == True:
-				pathFound = False
-				break
-			
 			if r == 0 and array[r][c-1] == False:
-				c -= 1
 				countMoves += 1
-
-			elif r == 0 and array[r][c-1] == True:
-				pathFound = False
-
-		if isPathAvailable(array) and pathFound:
-			return countMoves
-		else:
-			countMoves = "Path not found."
-			return countMoves
+				c -= 1
+				
+		return countMoves
 
 	except IndexError as e:
 		countMoves = "Path not found."
